@@ -183,3 +183,72 @@ export async function usernameExists(username: string): Promise<boolean> {
   return result.rows.length > 0
 }
 
+// 检查用户名是否被其他用户使用（排除指定用户ID）
+export async function usernameExistsForOtherUser(
+  username: string,
+  excludeUserId: string
+): Promise<boolean> {
+  const pool = getDbPool()
+  const result = await pool.query(
+    'SELECT 1 FROM users WHERE username = $1 AND id != $2',
+    [username, excludeUserId]
+  )
+  return result.rows.length > 0
+}
+
+// 更新用户信息
+export async function updateUser(
+  userId: string,
+  updates: {
+    username?: string
+    passwordHash?: string
+  }
+) {
+  const pool = getDbPool()
+  const updateFields: string[] = []
+  const values: unknown[] = []
+  let paramIndex = 1
+
+  if (updates.username !== undefined) {
+    updateFields.push(`username = $${paramIndex}`)
+    values.push(updates.username)
+    paramIndex++
+  }
+
+  if (updates.passwordHash !== undefined) {
+    updateFields.push(`password_hash = $${paramIndex}`)
+    values.push(updates.passwordHash)
+    paramIndex++
+  }
+
+  if (updateFields.length === 0) {
+    throw new Error('没有要更新的字段')
+  }
+
+  // 添加 updated_at 字段
+  updateFields.push(`updated_at = CURRENT_TIMESTAMP`)
+  values.push(userId)
+
+  const query = `
+    UPDATE users 
+    SET ${updateFields.join(', ')} 
+    WHERE id = $${paramIndex}
+    RETURNING id, email, username, created_at, updated_at
+  `
+
+  const result = await pool.query(query, values)
+
+  if (result.rows.length === 0) {
+    return null
+  }
+
+  const row = result.rows[0]
+  return {
+    id: row.id,
+    email: row.email,
+    username: row.username,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  }
+}
+

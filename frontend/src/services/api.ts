@@ -151,6 +151,17 @@ export const api = {
       }>('/user/me', {
         method: 'GET',
       }),
+    updateMe: (data: {
+      username?: string
+      password?: string
+      newPassword?: string
+    }) =>
+      request<{
+        user: { id: string; email: string; username: string; createdAt: string }
+      }>('/user/me', {
+        method: 'PUT',
+        body: JSON.stringify(data),
+      }),
   },
 }
 
