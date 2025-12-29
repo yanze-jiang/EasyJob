@@ -75,14 +75,39 @@ function Home() {
               : 'Your email address, username, encrypted password, usage frequency, and token consumption.'}
           </div>
           <div className="info-item">
-            {isZh
-              ? 'EasyJob 由 robertyz666 于 2025年12月开发'
-              : 'EasyJob is developed by robertyz666 in Dec 2025'}
-          </div>
-          <div className="info-item">
-            {isZh
-              ? '如有建议，请发送至 robertyanzejiang@outlook.com'
-              : 'Any suggestions, please send to robertyanzejiang@outlook.com'}
+            {isZh ? (
+              <>
+                <strong className="brand-name">EasyJob</strong> 由{' '}
+                <strong className="brand-name">robertyz666</strong> 于
+                2025年12月开发，如有建议，请发送至{' '}
+                <span
+                  className="email-link"
+                  onClick={() => {
+                    navigator.clipboard.writeText('robertyanzejiang@outlook.com')
+                    alert('邮箱已复制到剪贴板')
+                  }}
+                  style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  robertyanzejiang@outlook.com
+                </span>
+              </>
+            ) : (
+              <>
+                <strong className="brand-name">EasyJob</strong> is developed by{' '}
+                <strong className="brand-name">robertyz666</strong> in Dec 2025,
+                any suggestions, please send to{' '}
+                <span
+                  className="email-link"
+                  onClick={() => {
+                    navigator.clipboard.writeText('robertyanzejiang@outlook.com')
+                    alert('Email copied to clipboard')
+                  }}
+                  style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  robertyanzejiang@outlook.com
+                </span>
+              </>
+            )}
           </div>
           <div className="info-item">
             <button className="tip-button">
