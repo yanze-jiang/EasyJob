@@ -30,32 +30,54 @@ function Home() {
   return (
     <div className="home">
       <div className="hero">
-        <h2>{isZh ? '欢迎来到 EasyJob' : 'Welcome to EasyJob'}</h2>
-        <p className="hero-description">
-          {isZh ? (
-            <>
-              使用 AI 来优化你的简历！试试 <strong>Qwen3-plus</strong>！
-              <br />
-              已解锁<strong>项目润色</strong>和<strong>求职信</strong>功能！
-              <br />
-              由 robertyz666 于2025年12月开发。
-            </>
-          ) : (
-            <>
-              Using AI to revise your CV! Try <strong>Qwen3-plus</strong>!
-              <br />
-              Developed by robertyz666 in Dec 2025
-              <br />
-              Already unlock <strong>Project Polish</strong> and <strong>Cover Letter</strong>!
-            </>
-          )}
-        </p>
+        <h2 className="hero-title">
+          {isZh
+            ? '欢迎来到 EasyJob，AI 助您优化简历，提升职业发展！'
+            : 'Welcome to EasyJob, where AI helps refine your resume and boost your career!'}
+        </h2>
+        <div className="hero-content">
+          <div className="hero-column">
+            <div className="info-item">
+              <strong>
+                {isZh ? '功能锁定：' : 'Function locked: '}
+              </strong>
+              {isZh ? '项目润色和求职信' : 'Project Polish and Cover Letter'}
+            </div>
+            <div className="info-item">
+              <strong>{isZh ? '使用模型：' : 'Model used: '}</strong>
+              qwen3-plus
+            </div>
+            <div className="info-item">
+              <strong>{isZh ? '数据收集：' : 'Data collected: '}</strong>
+              {isZh
+                ? '您的邮箱地址、用户名、加密密码、使用频率和 Token 消耗。'
+                : 'Your email address, username, encrypted password, usage frequency, and token consumption.'}
+            </div>
+          </div>
+          <div className="hero-column">
+            <div className="info-item">
+              {isZh
+                ? 'EasyJob 由 robertyz666 于 2025年12月开发，'
+                : 'EasyJob is developed by robertyz666 in Dec 2025,'}
+            </div>
+            <div className="info-item">
+              {isZh
+                ? '如有建议，请发送至 robertyanzejiang@outlook.com'
+                : 'Any suggestions, please send to robertyanzejiang@outlook.com'}
+            </div>
+            <div className="info-item">
+              <button className="tip-button">
+                {isZh ? '[打赏创作者]' : '[Tip the creator]'}
+              </button>
+            </div>
+          </div>
+        </div>
         <div className="backend-status">
           <span className={`status-indicator ${backendStatus}`}>
             {backendStatus === 'checking' &&
               (isZh ? '🔄 正在检查后端连接…' : '🔄 Checking backend...')}
             {backendStatus === 'connected' &&
-              (isZh ? '✅ 后端已连接' : '✅ Backend connected')}
+              (isZh ? '✅ 已连接到服务器，可以开始使用了。' : '✅ Connected to the server, you can try now.')}
             {backendStatus === 'disconnected' &&
               (isZh ? '⚠️ 后端未连接' : '⚠️ Backend disconnected')}
           </span>
