@@ -32,9 +32,19 @@ function Home() {
       <div className="hero">
         <h2>{isZh ? '欢迎来到 EasyJob' : 'Welcome to EasyJob'}</h2>
         <p className="hero-description">
-          {isZh
-            ? '选择一个工具，让 AI 帮你提升求职竞争力'
-            : 'Choose a tool to enhance your career journey with AI-powered assistance'}
+          {isZh ? (
+            <>
+              使用 AI 来优化你的简历！试试 Qwen3-plus！！！
+              <br />
+              由 robertyz666 开发。已解锁项目润色和求职信功能！
+            </>
+          ) : (
+            <>
+              Using AI to revise your CV! Try Qwen3-plus!!!
+              <br />
+              Developed by robertyz666. Already unlock Project Polish and Cover Letter!
+            </>
+          )}
         </p>
         <div className="backend-status">
           <span className={`status-indicator ${backendStatus}`}>
