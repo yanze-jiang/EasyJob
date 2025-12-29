@@ -1,0 +1,28 @@
+.page-placeholder {
+  padding: 2rem;
+  text-align: center;
+}
+
+.page-placeholder h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.placeholder-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.placeholder-content {
+  background: #f9f9f9;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 3rem;
+  color: #999;
+}
+
