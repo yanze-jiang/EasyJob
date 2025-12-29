@@ -23,6 +23,7 @@ function ProjectPolish() {
     en: {
       title: 'Project Polish',
       description: 'Enhance your project descriptions with professional language and structure',
+      hint: 'Try intern, research, competition or even course project!',
       modeLabel: 'Select Mode',
       modeWithoutJob: 'Project Polish without Target Job',
       modeWithJob: 'Project Polish with Target Job',
@@ -49,6 +50,7 @@ function ProjectPolish() {
     zh: {
       title: '项目润色',
       description: '使用专业的语言和结构来增强您的项目描述',
+      hint: '试试实习、研究、竞赛甚至课程项目！',
       modeLabel: '选择模式',
       modeWithoutJob: '无目标职位的项目润色',
       modeWithJob: '针对目标职位的项目润色',
@@ -161,6 +163,7 @@ function ProjectPolish() {
       <div className="polish-header">
         <h1>{t.title}</h1>
         <p className="polish-description">{t.description}</p>
+        <p className="polish-hint">{t.hint}</p>
       </div>
 
       <div className="polish-container">

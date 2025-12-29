@@ -19,6 +19,14 @@
 .polish-description {
   font-size: 1.1rem;
   color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.polish-hint {
+  font-size: 1rem;
+  color: #667eea;
+  font-style: italic;
+  margin-top: 0.5rem;
 }
 
 .polish-container {
