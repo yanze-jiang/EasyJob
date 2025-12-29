@@ -9,6 +9,7 @@ function Home() {
     'checking' | 'connected' | 'disconnected'
   >('checking')
   const [showTipModal, setShowTipModal] = useState(false)
+  const [activeSection, setActiveSection] = useState<'intro' | 'menu'>('intro')
   const { language } = useLanguage()
   const isZh = language === 'zh'
 
@@ -30,7 +31,30 @@ function Home() {
 
   return (
     <div className="home">
-      <div className="hero">
+      <div className="home-container">
+        <div className="home-sidebar">
+          <div className="sidebar-item">
+            <button
+              className={`sidebar-button ${activeSection === 'intro' ? 'active' : ''}`}
+              onClick={() => setActiveSection('intro')}
+            >
+              {isZh ? '介绍' : 'Intro'}
+            </button>
+          </div>
+          <div className="sidebar-item">
+            <button
+              className={`sidebar-button ${activeSection === 'menu' ? 'active' : ''}`}
+              onClick={() => setActiveSection('menu')}
+            >
+              {isZh ? '菜单' : 'Menu'}
+            </button>
+          </div>
+        </div>
+
+        <div className="home-content">
+          {activeSection === 'intro' && (
+            <>
+              <div className="hero">
         <h2 className="hero-title">
           {isZh ? (
             <>
@@ -91,8 +115,8 @@ function Home() {
                 {isZh ? '数据收集：' : 'Data Collected: '}
               </strong>
               {isZh
-                ? '邮箱地址、用户名（加密密码）、使用频率和 Token 消耗'
-                : 'Email address, username (encrypted password), usage frequency, and token consumption'}
+                ? '邮箱地址、用户名、加密后的密码、各功能使用次数和 Token 消耗'
+                : 'Email address, username, encrypted password, usage frequency of each function, and token consumption'}
             </div>
           </div>
         </div>
@@ -141,14 +165,17 @@ function Home() {
                 onClick={() => setShowTipModal(true)}
                 style={{ cursor: 'pointer' }}
               >
-                {isZh ? '打赏开发者：' : 'Tip developer: '}
+                {isZh ? '打赏开发者' : 'Tip developer'}
               </span>
             </div>
           </div>
         </div>
       </div>
+            </>
+          )}
 
-      <div className="feature-cards">
+          {activeSection === 'menu' && (
+            <div className="feature-cards">
         <div className="feature-card">
           <div className="card-icon">📝</div>
           <h3>{isZh ? '简历编辑' : 'CV Editor'}</h3>
@@ -199,6 +226,9 @@ function Home() {
           <Link to="/my-account" className="card-button">
             {isZh ? '进入账户' : 'Go to Account'}
           </Link>
+        </div>
+            </div>
+          )}
         </div>
       </div>
 
