@@ -35,13 +35,13 @@ function Home() {
             <>
               欢迎来到 EasyJob
               <br />
-              AI 助您优化简历，提升职业发展！
+              <span className="hero-subtitle">AI 助您优化简历，提升职业发展！</span>
             </>
           ) : (
             <>
               Welcome to EasyJob
               <br />
-              where AI helps refine your resume and boost your career!
+              <span className="hero-subtitle">where AI helps refine your resume and boost your career!</span>
             </>
           )}
         </h2>
@@ -51,11 +51,21 @@ function Home() {
               <strong>
                 {isZh ? '解锁功能：' : 'Function avaliable: '}
               </strong>
-              {isZh ? '项目润色和求职信' : 'Project Polish and Cover Letter'}
+              {isZh ? (
+                <>
+                  <span className="highlight-text">项目润色</span> 和{' '}
+                  <span className="highlight-text">求职信</span>
+                </>
+              ) : (
+                <>
+                  <span className="highlight-text">Project Polish</span> and{' '}
+                  <span className="highlight-text">Cover Letter</span>
+                </>
+              )}
             </div>
             <div className="info-item">
               <strong>{isZh ? '使用模型：' : 'Model used: '}</strong>
-              qwen3-plus
+              <span className="model-name">qwen3-plus</span>
             </div>
           </div>
           <div className="info-item">
