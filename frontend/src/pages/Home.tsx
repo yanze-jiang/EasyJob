@@ -42,11 +42,11 @@ function Home() {
             </>
           ) : (
             <>
-              Using AI to revise your CV! Try <strong>Qwen3-plus</strong>!!!
-              <br />
-              Developed by robertyz666.
+              Using AI to revise your CV! Try <strong>Qwen3-plus</strong>!
               <br />
               Already unlock <strong>Project Polish</strong> and <strong>Cover Letter</strong>!
+              <br />
+              Developed by robertyz666 in Dec 2025
             </>
           )}
         </p>
