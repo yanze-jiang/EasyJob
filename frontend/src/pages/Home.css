@@ -16,18 +16,18 @@
 }
 
 .hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   max-width: 1000px;
   margin: 0 auto 2rem;
   text-align: left;
 }
 
-.hero-column {
+.info-row {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
 .info-item {
@@ -146,9 +146,9 @@
     font-size: 2rem;
   }
 
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .info-row {
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .feature-cards {

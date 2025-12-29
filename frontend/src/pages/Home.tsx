@@ -31,15 +31,25 @@ function Home() {
     <div className="home">
       <div className="hero">
         <h2 className="hero-title">
-          {isZh
-            ? '欢迎来到 EasyJob，AI 助您优化简历，提升职业发展！'
-            : 'Welcome to EasyJob, where AI helps refine your resume and boost your career!'}
+          {isZh ? (
+            <>
+              欢迎来到 EasyJob
+              <br />
+              AI 助您优化简历，提升职业发展！
+            </>
+          ) : (
+            <>
+              Welcome to EasyJob
+              <br />
+              where AI helps refine your resume and boost your career!
+            </>
+          )}
         </h2>
         <div className="hero-content">
-          <div className="hero-column">
+          <div className="info-row">
             <div className="info-item">
               <strong>
-                {isZh ? '功能锁定：' : 'Function locked: '}
+                {isZh ? '解锁功能：' : 'Function avaliable: '}
               </strong>
               {isZh ? '项目润色和求职信' : 'Project Polish and Cover Letter'}
             </div>
@@ -47,29 +57,27 @@ function Home() {
               <strong>{isZh ? '使用模型：' : 'Model used: '}</strong>
               qwen3-plus
             </div>
-            <div className="info-item">
-              <strong>{isZh ? '数据收集：' : 'Data collected: '}</strong>
-              {isZh
-                ? '您的邮箱地址、用户名、加密密码、使用频率和 Token 消耗。'
-                : 'Your email address, username, encrypted password, usage frequency, and token consumption.'}
-            </div>
           </div>
-          <div className="hero-column">
-            <div className="info-item">
-              {isZh
-                ? 'EasyJob 由 robertyz666 于 2025年12月开发，'
-                : 'EasyJob is developed by robertyz666 in Dec 2025,'}
-            </div>
-            <div className="info-item">
-              {isZh
-                ? '如有建议，请发送至 robertyanzejiang@outlook.com'
-                : 'Any suggestions, please send to robertyanzejiang@outlook.com'}
-            </div>
-            <div className="info-item">
-              <button className="tip-button">
-                {isZh ? '[打赏创作者]' : '[Tip the creator]'}
-              </button>
-            </div>
+          <div className="info-item">
+            <strong>{isZh ? '数据收集：' : 'Data collected: '}</strong>
+            {isZh
+              ? '您的邮箱地址、用户名、加密后的密码、各功能使用频率和 Token 消耗。'
+              : 'Your email address, username, encrypted password, usage frequency, and token consumption.'}
+          </div>
+          <div className="info-item">
+            {isZh
+              ? 'EasyJob 由 robertyz666 于 2025年12月开发'
+              : 'EasyJob is developed by robertyz666 in Dec 2025'}
+          </div>
+          <div className="info-item">
+            {isZh
+              ? '如有建议，请发送至 robertyanzejiang@outlook.com'
+              : 'Any suggestions, please send to robertyanzejiang@outlook.com'}
+          </div>
+          <div className="info-item">
+            <button className="tip-button">
+              {isZh ? '打赏创作者' : 'Tip the creator'}
+            </button>
           </div>
         </div>
         <div className="backend-status">
