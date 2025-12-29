@@ -66,7 +66,7 @@ function Layout({ children }: LayoutProps) {
       <main className="main-content">{children}</main>
       <footer className="footer">
         <p>
-          &copy; 2024 EasyJob.{' '}
+          &copy; 2025 EasyJob.{' '}
           {isZh ? '保留所有权利。' : 'All rights reserved.'}
         </p>
       </footer>
