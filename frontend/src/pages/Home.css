@@ -38,7 +38,8 @@
   font-size: 1rem;
   color: #666;
   line-height: 1.6;
-  display: inline-block;
+  text-align: left;
+  width: 100%;
 }
 
 .info-item strong {
