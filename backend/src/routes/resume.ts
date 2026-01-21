@@ -52,3 +52,4 @@ router.post('/extract-text', upload.single('resumeFile'), async (req: Request, r
 
 export default router
 
+

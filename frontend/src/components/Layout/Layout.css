@@ -4,6 +4,13 @@
   min-height: 100vh;
 }
 
+.layout-body {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  overflow: hidden;
+}
+
 .header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -101,9 +108,10 @@
 .main-content {
   flex: 1;
   padding: 2rem;
-  max-width: 1200px;
+  max-width: calc(1200px - 280px);
   width: 100%;
   margin: 0 auto;
+  overflow-y: auto;
 }
 
 .footer {
@@ -123,8 +131,13 @@
     font-size: 2rem;
   }
 
+  .layout-body {
+    flex-direction: column;
+  }
+
   .main-content {
     padding: 1rem;
+    max-width: 100%;
   }
 }
 

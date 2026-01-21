@@ -10,7 +10,6 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   const { language, toggleLanguage } = useLanguage()
-  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [username, setUsername] = useState<string | null>(null)
 
   const isZh = language === 'zh'
@@ -63,14 +62,6 @@ function Layout({ children }: LayoutProps) {
             )}
             <button
               type="button"
-              className="menu-button"
-              onClick={() => setSidebarOpen(true)}
-              aria-label={isZh ? '打开菜单' : 'Open menu'}
-            >
-              ☰
-            </button>
-            <button
-              type="button"
               className="lang-switch"
               onClick={toggleLanguage}
             >
@@ -79,14 +70,16 @@ function Layout({ children }: LayoutProps) {
           </div>
         </div>
       </header>
-      <main className="main-content">{children}</main>
+      <div className="layout-body">
+        <Sidebar />
+        <main className="main-content">{children}</main>
+      </div>
       <footer className="footer">
         <p>
-          &copy; 2025 EasyJob.{' '}
+          &copy; 2026 EasyJob.{' '}
           {isZh ? '保留所有权利。' : 'All rights reserved.'}
         </p>
       </footer>
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
     </div>
   )
 }
