@@ -196,7 +196,14 @@ function Home() {
               <img 
                 src="/tip.jpg" 
                 alt={isZh ? '打赏二维码' : 'Tip QR Code'} 
-                style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }}
+                style={{ 
+                  maxWidth: '300px', 
+                  width: '100%', 
+                  height: 'auto', 
+                  borderRadius: '8px',
+                  display: 'block',
+                  margin: '0 auto'
+                }}
               />
             </div>
             <p className="modal-text">
