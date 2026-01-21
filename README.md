@@ -94,9 +94,9 @@ VITE_API_BASE_URL=http://localhost:4000/api
 
 ## Future Development
 
-- CV Editor: Detailed implementation with AI suggestions
-- Project Polish: AI-powered project description enhancement
-- Cover Letter Writing: Automated cover letter generation
+- Edit CV: Detailed implementation with AI suggestions
+- Polish Project: AI-powered project description enhancement
+- Write Cover Letter: Automated cover letter generation
 
 ## Deployment
 

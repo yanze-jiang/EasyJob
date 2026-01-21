@@ -21,12 +21,12 @@ function ProjectPolish() {
 
   const translations = {
     en: {
-      title: 'Project Polish',
+      title: 'Polish Project',
       description: 'Enhance your project descriptions with professional language and structure',
       hint: 'Try intern, research, competition or even course project!',
       modeLabel: 'Select Mode',
-      modeWithoutJob: 'Project Polish without Target Job',
-      modeWithJob: 'Project Polish with Target Job',
+      modeWithoutJob: 'Polish Project without Target Job',
+      modeWithJob: 'Polish Project with Target Job',
       outputLangLabel: 'Output Language',
       outputLangEn: 'English',
       outputLangZh: 'Chinese',

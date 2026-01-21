@@ -42,7 +42,7 @@ function Home() {
               </div>
               <div className="detail-item">
                 <span className="highlight-text">
-                  {isZh ? '求职信' : 'Cover Letter'}
+                  {isZh ? '求职信' : 'Write Cover Letter'}
                 </span>
               </div>
             </div>
@@ -127,7 +127,7 @@ function Home() {
         <div className="feature-cards">
           <div className="feature-card">
             <div className="card-icon">📝</div>
-            <h3>{isZh ? '简历编辑' : 'CV Editor'}</h3>
+            <h3>{isZh ? '简历编辑' : 'Edit CV'}</h3>
             <p>
               {isZh
                 ? '利用 AI 优化你的简历内容和表达方式，让亮点更突出。'
@@ -140,7 +140,7 @@ function Home() {
 
           <div className="feature-card">
             <div className="card-icon">✨</div>
-            <h3>{isZh ? '项目润色' : 'Project Polish'}</h3>
+            <h3>{isZh ? '项目润色' : 'Polish Project'}</h3>
             <p>
               {isZh
                 ? '用专业、清晰的语言包装你的项目经历，让面试官一眼看懂价值。'
@@ -153,7 +153,7 @@ function Home() {
 
           <div className="feature-card">
             <div className="card-icon">✉️</div>
-            <h3>{isZh ? '求职信助手' : 'Cover Letter'}</h3>
+            <h3>{isZh ? '求职信助手' : 'Write Cover Letter'}</h3>
             <p>
               {isZh
                 ? '根据职位 JD 和你的背景，一键生成个性化求职信。'

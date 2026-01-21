@@ -37,7 +37,7 @@ function CoverLetter() {
 
   const translations = {
     en: {
-      title: 'Cover Letter',
+      title: 'Write Cover Letter',
       description: 'Create professional cover letters tailored to your job applications',
       languageLabel: 'Cover Letter Language',
       languageEn: 'English',

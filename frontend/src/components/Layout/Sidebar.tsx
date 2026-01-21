@@ -42,9 +42,9 @@ function Sidebar() {
 
   const menuItems = [
     { path: '/', labelEn: 'Home', labelZh: '首页', icon: '🏠' },
-    { path: '/cv-editor', labelEn: 'CV Editor', labelZh: '简历编辑', icon: '📝' },
-    { path: '/project-polish', labelEn: 'Project Polish', labelZh: '项目润色', icon: '✨' },
-    { path: '/cover-letter', labelEn: 'Cover Letter', labelZh: '求职信助手', icon: '✉️' },
+    { path: '/cv-editor', labelEn: 'Edit CV', labelZh: '简历编辑', icon: '📝' },
+    { path: '/project-polish', labelEn: 'Polish Project', labelZh: '项目润色', icon: '✨' },
+    { path: '/cover-letter', labelEn: 'Write Cover Letter', labelZh: '求职信助手', icon: '✉️' },
     { path: '/my-account', labelEn: 'My Account', labelZh: '我的账户', icon: '👤' },
   ]
 

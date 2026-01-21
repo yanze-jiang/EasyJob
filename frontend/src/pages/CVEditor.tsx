@@ -34,7 +34,7 @@ const cvModules: CVModuleOption[] = [
   },
   {
     id: 'publications',
-    labelEn: 'Paper Publications',
+    labelEn: 'Paper Publication',
     labelZh: '论文发表',
   },
   {
@@ -58,7 +58,7 @@ function CVEditor() {
 
   const translations = {
     en: {
-      title: 'CV Editor',
+      title: 'Edit CV',
       description: 'Select the modules you want to include in your CV',
       selectAll: 'Select All',
       deselectAll: 'Deselect All',
