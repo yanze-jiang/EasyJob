@@ -11,35 +11,62 @@ interface LayoutProps {
 function Layout({ children }: LayoutProps) {
   const { language, toggleLanguage } = useLanguage()
   const [username, setUsername] = useState<string | null>(null)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
 
   const isZh = language === 'zh'
 
-  // 从localStorage获取用户信息
-  const updateUsername = () => {
+  // 从localStorage获取用户信息和认证状态
+  const updateAuthState = () => {
+    const token = localStorage.getItem('token')
     const userStr = localStorage.getItem('user')
-    if (userStr) {
+    
+    if (token && userStr) {
       try {
         const user = JSON.parse(userStr)
         setUsername(user.username || null)
+        setIsAuthenticated(true)
       } catch (e) {
         console.error('Failed to parse user data:', e)
+        setUsername(null)
+        setIsAuthenticated(false)
       }
+    } else {
+      setUsername(null)
+      setIsAuthenticated(false)
     }
   }
 
   useEffect(() => {
     // 初始加载
-    updateUsername()
+    updateAuthState()
 
     // 监听用户名更新事件
     const handleUsernameUpdate = (event: CustomEvent) => {
-      setUsername(event.detail.username)
+      updateAuthState()
     }
 
+    // 监听 localStorage 变化（用于检测登出，跨标签页同步）
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'token' || e.key === 'user') {
+        updateAuthState()
+      }
+    }
+
+    // 监听自定义事件
     window.addEventListener('usernameUpdated', handleUsernameUpdate as EventListener)
+    
+    // 监听 storage 事件（跨标签页同步）
+    window.addEventListener('storage', handleStorageChange)
+    
+    // 定期检查认证状态（处理同标签页的 localStorage 变化）
+    const intervalId = setInterval(() => {
+      updateAuthState()
+    }, 500)
 
     return () => {
       window.removeEventListener('usernameUpdated', handleUsernameUpdate as EventListener)
+      window.removeEventListener('storage', handleStorageChange)
+      clearInterval(intervalId)
     }
   }, [])
 
@@ -55,9 +82,13 @@ function Layout({ children }: LayoutProps) {
             </p>
           </Link>
           <div className="header-right">
-            {username && (
+            {isAuthenticated && username ? (
               <span className="username-display" style={{ marginRight: '1rem' }}>
                 {isZh ? `欢迎, ${username}` : `Welcome, ${username}`}
+              </span>
+            ) : (
+              <span className="username-display" style={{ marginRight: '1rem' }}>
+                {isZh ? '请先登录' : 'Please log in first'}
               </span>
             )}
             <button

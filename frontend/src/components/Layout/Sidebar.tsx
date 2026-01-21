@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
+import api from '../../services/api'
 import './Sidebar.css'
 
 function Sidebar() {
@@ -8,13 +9,34 @@ function Sidebar() {
   const navigate = useNavigate()
   const { language } = useLanguage()
   const [collapsed, setCollapsed] = useState(false)
+  const [backendStatus, setBackendStatus] = useState<
+    'checking' | 'connected' | 'disconnected'
+  >('checking')
 
   const isZh = language === 'zh'
+
+  useEffect(() => {
+    // Test backend connection on component mount
+    api
+      .health()
+      .then((response) => {
+        if (response.success) {
+          setBackendStatus('connected')
+        } else {
+          setBackendStatus('disconnected')
+        }
+      })
+      .catch(() => {
+        setBackendStatus('disconnected')
+      })
+  }, [])
 
   // 登出功能
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
+    // 触发自定义事件通知 Layout 更新
+    window.dispatchEvent(new CustomEvent('usernameUpdated'))
     navigate('/login')
   }
 
@@ -31,6 +53,18 @@ function Sidebar() {
       <div className="sidebar-header">
         {!collapsed && <h2>{isZh ? '菜单' : 'Menu'}</h2>}
       </div>
+      {!collapsed && (
+        <div className="sidebar-status">
+          <span className={`status-indicator ${backendStatus}`}>
+            {backendStatus === 'checking' &&
+              (isZh ? '🔄 正在检查后端连接…' : '🔄 Checking backend...')}
+            {backendStatus === 'connected' &&
+              (isZh ? '✅ 已连接到服务器，可以开始使用了。' : '✅ Connected to the server, you can try now.')}
+            {backendStatus === 'disconnected' &&
+              (isZh ? '⚠️ 后端未连接' : '⚠️ Backend disconnected')}
+          </span>
+        </div>
+      )}
       <nav className="sidebar-nav">
         {menuItems.map((item) => (
           <Link
