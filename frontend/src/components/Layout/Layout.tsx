@@ -41,7 +41,7 @@ function Layout({ children }: LayoutProps) {
     updateAuthState()
 
     // 监听用户名更新事件
-    const handleUsernameUpdate = (event: CustomEvent) => {
+    const handleUsernameUpdate = () => {
       updateAuthState()
     }
 
