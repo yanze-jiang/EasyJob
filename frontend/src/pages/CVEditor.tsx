@@ -14,7 +14,6 @@ interface CVModuleOption {
   id: CVModule
   labelEn: string
   labelZh: string
-  icon: string
 }
 
 const cvModules: CVModuleOption[] = [
@@ -22,37 +21,31 @@ const cvModules: CVModuleOption[] = [
     id: 'education',
     labelEn: 'Education Background',
     labelZh: '教育背景',
-    icon: '🎓',
   },
   {
     id: 'working',
     labelEn: 'Working Experience',
     labelZh: '工作经历',
-    icon: '💼',
   },
   {
     id: 'project',
     labelEn: 'Project Experience',
     labelZh: '项目经历',
-    icon: '🚀',
   },
   {
     id: 'publications',
     labelEn: 'Paper Publications',
     labelZh: '论文发表',
-    icon: '📄',
   },
   {
     id: 'leadership',
     labelEn: 'Other/Leadership Experience',
     labelZh: '其他/领导经验',
-    icon: '👥',
   },
   {
     id: 'skills',
     labelEn: 'Skills',
     labelZh: '技能',
-    icon: '⚡',
   },
 ]
 
@@ -137,27 +130,24 @@ function CVEditor() {
             </button>
           </div>
 
-          <div className="module-grid">
+          <div className="module-list">
             {cvModules.map((module) => {
               const isSelected = selectedModules.has(module.id)
               return (
-                <div
+                <label
                   key={module.id}
-                  className={`module-card ${isSelected ? 'selected' : ''}`}
-                  onClick={() => handleModuleToggle(module.id)}
+                  className={`module-item ${isSelected ? 'selected' : ''}`}
                 >
                   <input
                     type="checkbox"
                     checked={isSelected}
                     onChange={() => handleModuleToggle(module.id)}
                     className="module-checkbox"
-                    onClick={(e) => e.stopPropagation()}
                   />
-                  <div className="module-icon">{module.icon}</div>
-                  <div className="module-label">
+                  <span className="module-label">
                     {isZh ? module.labelZh : module.labelEn}
-                  </div>
-                </div>
+                  </span>
+                </label>
               )
             })}
           </div>

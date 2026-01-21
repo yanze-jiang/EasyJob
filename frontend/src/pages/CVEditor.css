@@ -39,6 +39,7 @@
 }
 
 .action-button {
+  flex: 1;
   padding: 0.75rem 1.5rem;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
@@ -69,63 +70,53 @@
   background: #f5f5ff;
 }
 
-.module-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+.module-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   margin-top: 1rem;
 }
 
-.module-card {
-  position: relative;
+.module-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 2rem 1.5rem;
+  padding: 1rem 1.5rem;
   border: 2px solid #e0e0e0;
-  border-radius: 12px;
+  border-radius: 8px;
   background: white;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
   gap: 1rem;
 }
 
-.module-card:hover {
+.module-item:hover {
   border-color: #667eea;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  background: #f9f9ff;
 }
 
-.module-card.selected {
+.module-item.selected {
   border-color: #667eea;
-  background: linear-gradient(135deg, #f5f5ff 0%, #e8e8ff 100%);
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+  background: #f5f5ff;
 }
 
 .module-checkbox {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   width: 20px;
   height: 20px;
   cursor: pointer;
   accent-color: #667eea;
-}
-
-.module-icon {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 
 .module-label {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
   color: #333;
-  text-align: center;
+  flex: 1;
 }
 
-.module-card.selected .module-label {
+.module-item.selected .module-label {
   color: #667eea;
+  font-weight: 600;
 }
 
 .continue-section {
@@ -170,10 +161,6 @@
 @media (max-width: 768px) {
   .cv-editor-header h1 {
     font-size: 2rem;
-  }
-
-  .module-grid {
-    grid-template-columns: 1fr;
   }
 
   .selection-actions {

@@ -65,6 +65,11 @@ function Home() {
                   ? '邮箱地址、用户名、加密后的密码、各功能使用次数和 Token 消耗'
                   : 'Email address, username, encrypted password, usage frequency of each function, and token consumption'}
               </div>
+              <div className="detail-item">
+                <strong>
+                  {isZh ? '您的简历信息不会被收集。' : 'All information about your CV will not be collected.'}
+                </strong>
+              </div>
             </div>
           </div>
 
