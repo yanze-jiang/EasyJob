@@ -191,6 +191,14 @@ function Home() {
                 ? '感谢您的支持！如果您觉得 EasyJob 对您有帮助，欢迎打赏开发者。'
                 : 'Thank you for your support! If EasyJob has been helpful to you, we welcome tips for the developer.'}
             </p>
+            {/* 打赏二维码图片 - 将图片放在 public/ 文件夹，命名为 tip.jpg */}
+            <div className="tip-image-container" style={{ textAlign: 'center', margin: '1.5rem 0' }}>
+              <img 
+                src="/tip.jpg" 
+                alt={isZh ? '打赏二维码' : 'Tip QR Code'} 
+                style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }}
+              />
+            </div>
             <p className="modal-text">
               {isZh
                 ? '如有任何问题或建议，请发送邮件至：'
