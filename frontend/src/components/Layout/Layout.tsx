@@ -88,7 +88,7 @@ function Layout({ children }: LayoutProps) {
               </span>
             ) : (
               <span className="username-display" style={{ marginRight: '1rem' }}>
-                {isZh ? '请先登录' : 'Please log in first'}
+                {isZh ? '请先登录' : 'Please login！'}
               </span>
             )}
             <button

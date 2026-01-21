@@ -20,9 +20,9 @@
   justify-content: center;
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: #f3f0ff;
+  color: #6b46c1;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -95,14 +95,14 @@
 }
 
 .sidebar-item:hover {
-  background-color: #f8fafc;
-  color: #1e293b;
+  background-color: #f3f0ff;
+  color: #6b46c1;
 }
 
 .sidebar-item.active {
-  background-color: #f1f5f9;
-  color: #1e293b;
-  border-left-color: #1e293b;
+  background-color: #ede9fe;
+  color: #6b46c1;
+  border-left-color: #6b46c1;
   font-weight: 600;
 }
 
@@ -181,7 +181,7 @@
   transform: translateY(-50%);
   width: 24px;
   height: 60px;
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  background: #f3f0ff;
   border: none;
   border-radius: 0 12px 12px 0;
   cursor: pointer;
@@ -195,13 +195,13 @@
 }
 
 .sidebar-toggle:hover {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: #ede9fe;
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
   width: 28px;
 }
 
 .toggle-icon {
-  color: white;
+  color: #6b46c1;
   font-size: 0.8rem;
   transition: transform 0.3s ease;
   display: block;

@@ -59,7 +59,7 @@ function Sidebar() {
             {backendStatus === 'checking' &&
               (isZh ? '🔄 正在检查后端连接…' : '🔄 Checking backend...')}
             {backendStatus === 'connected' &&
-              (isZh ? '✅ 已连接到服务器，可以开始使用了。' : '✅ Connected to the server, you can try now.')}
+              (isZh ? '✅ 已连至云端，现可使用。' : '✅ Connected to the server, you can try now.')}
             {backendStatus === 'disconnected' &&
               (isZh ? '⚠️ 后端未连接' : '⚠️ Backend disconnected')}
           </span>
