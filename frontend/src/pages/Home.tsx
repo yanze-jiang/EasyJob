@@ -37,7 +37,12 @@ function Home() {
             <div className="info-details">
               <div className="detail-item">
                 <span className="highlight-text">
-                  {isZh ? '简历润色' : 'Resume Polish'}
+                  {isZh ? '编辑简历' : 'Edit CV'}
+                </span>
+              </div>
+              <div className="detail-item">
+                <span className="highlight-text">
+                  {isZh ? '项目润色' : 'Polish Project'}
                 </span>
               </div>
               <div className="detail-item">
