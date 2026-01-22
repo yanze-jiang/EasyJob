@@ -1,0 +1,374 @@
+.cv-module-input {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.cv-module-input-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cv-module-input-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.cv-module-input-description {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.cv-module-input-container {
+  margin: 2rem auto 0;
+  max-width: 900px;
+}
+
+.progress-section {
+  margin-bottom: 1.5rem;
+}
+
+.module-navigation {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.module-navigation-label {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.module-navigation-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.module-nav-item {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background: white;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.module-nav-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.module-nav-completed {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.module-nav-completed:hover {
+  background: #c3e6cb;
+  border-color: #218838;
+}
+
+.module-nav-current {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  font-weight: 600;
+}
+
+.module-nav-current:hover {
+  opacity: 0.9;
+}
+
+.module-nav-pending {
+  background: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.module-nav-pending:hover {
+  background: #ffeaa7;
+  border-color: #ffb300;
+}
+
+.progress-label {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+}
+
+.module-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.current-module-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.module-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s;
+  min-height: 300px;
+}
+
+.module-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.input-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.navigation-buttons .action-button {
+  flex: 0 1 auto;
+  min-width: 150px;
+  max-width: 200px;
+  width: 200px;
+}
+
+.action-button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  color: #666;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-button:hover:not(:disabled) {
+  border-color: #667eea;
+  color: #667eea;
+  background: #f5f5ff;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.skip-button {
+  color: #999;
+}
+
+.skip-button:hover {
+  border-color: #999;
+  color: #666;
+}
+
+.next-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.next-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.previous-button {
+  background: white;
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.back-button {
+  background: white;
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.continue-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.continue-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* 数量选择器样式 */
+.count-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.count-selector-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.count-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+  justify-content: center;
+}
+
+.count-input {
+  width: 100px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #667eea;
+  background: white;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.count-input:focus {
+  outline: none;
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.count-input::-webkit-inner-spin-button,
+.count-input::-webkit-outer-spin-button {
+  opacity: 1;
+  height: 30px;
+}
+
+.confirm-count-button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.confirm-count-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* 多输入框容器样式 */
+.multi-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.multi-input-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.multi-input-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #667eea;
+  padding: 0.5rem 0;
+}
+
+.change-count-button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  color: #666;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: center;
+  margin-top: 1rem;
+}
+
+.change-count-button:hover {
+  border-color: #667eea;
+  color: #667eea;
+  background: #f5f5ff;
+}
+
+@media (max-width: 768px) {
+  .cv-module-input-header h1 {
+    font-size: 2rem;
+  }
+
+  .input-actions {
+    flex-direction: column;
+  }
+
+  .navigation-buttons {
+    width: 100%;
+  }
+
+  .action-button {
+    flex: 1;
+  }
+
+  .count-input-container {
+    max-width: 100%;
+  }
+}

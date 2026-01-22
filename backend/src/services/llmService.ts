@@ -1,5 +1,16 @@
 import { config } from '../config/env'
 import OpenAI from 'openai'
+import {
+  CVModule,
+  StructuredData,
+  EducationData,
+  WorkingExperienceData,
+  ProjectExperienceData,
+  PublicationData,
+  LeadershipData,
+  SkillsData,
+  CompletenessCheck,
+} from '../types/cv'
 
 // Type definitions for LLM service inputs/outputs
 export interface CvInput {

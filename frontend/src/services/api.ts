@@ -1,3 +1,5 @@
+import type { CVModule, StructuredData, CompletenessCheck } from '../types/cv'
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
 
 interface ApiResponse<T> {
@@ -115,6 +117,79 @@ export const api = {
           method: 'GET',
         }
       ),
+    extractModule: async (moduleType: CVModule, rawText: string, language: 'en' | 'zh' = 'zh') => {
+      const response = await request<{ data: StructuredData; completeness: CompletenessCheck }>('/cv/extract-module', {
+        method: 'POST',
+        body: JSON.stringify({ moduleType, rawText, language }),
+      })
+      
+      // Debug logging
+      if (import.meta.env.DEV) {
+        console.log('[API] extractModule response:', {
+          success: response.success,
+          hasData: !!response.data,
+          dataKeys: response.data ? Object.keys(response.data) : [],
+          error: response.error,
+        })
+      }
+      
+      if (response.success && response.data) {
+        // Check if response.data has the expected structure
+        if ('data' in response.data && 'completeness' in response.data) {
+          return {
+            success: true,
+            data: response.data.data,
+            completeness: response.data.completeness,
+          } as { success: true; data: StructuredData; completeness: CompletenessCheck }
+        } else {
+          // Fallback: maybe the structure is different
+          console.error('[API] extractModule: Unexpected response structure:', response.data)
+          return {
+            success: false,
+            error: 'Unexpected response format from server',
+          } as { success: false; error: string }
+        }
+      }
+      
+      const errorMsg = response.error || 'Failed to extract information'
+      if (import.meta.env.DEV) {
+        console.error('[API] extractModule failed:', errorMsg, response)
+      }
+      return { success: false, error: errorMsg } as { success: false; error: string }
+    },
+    checkCompleteness: (moduleType: CVModule, data: StructuredData, language: 'en' | 'zh' = 'zh') =>
+      request<CompletenessCheck>('/cv/check-completeness', {
+        method: 'POST',
+        body: JSON.stringify({ moduleType, data, language }),
+      }),
+    generateWord: async (modules: Partial<Record<CVModule, StructuredData>>, language: 'en' | 'zh' = 'zh') => {
+      const token = localStorage.getItem('token')
+      const url = `${API_BASE_URL}/cv/generate-word`
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          },
+          body: JSON.stringify({ modules, language }),
+        })
+        if (!res.ok) {
+          const errorData = await res.json().catch(() => ({}))
+          return {
+            success: false,
+            error: errorData.error || `HTTP error! status: ${res.status}`,
+          }
+        }
+        const blob = await res.blob()
+        return { success: true, data: blob }
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Unknown error',
+        }
+      }
+    },
   },
 
   project: {
