@@ -37,7 +37,7 @@ function Home() {
             <div className="info-details">
               <div className="detail-item">
                 <span className="highlight-text">
-                  {isZh ? '编辑简历' : 'Edit CV'}
+                  {isZh ? '编辑简历' : 'Edit CV'} {isZh ? '[最新发布]' : '[Newly released!]'}
                 </span>
               </div>
               <div className="detail-item">
@@ -123,6 +123,14 @@ function Home() {
                   style={{ cursor: 'pointer' }}
                 >
                   {isZh ? '打赏开发者' : 'Tip developer'}
+                </span>
+              </div>
+            </div>
+            <div className="info-details" style={{ marginTop: '0.75rem' }}>
+              <div className="detail-item">
+                <strong>{isZh ? '致谢：' : 'Acknowledgement: '}</strong>
+                <span>
+                  {isZh ? 'CV的模版源于CUHK Coop Team' : 'CV template is sourced from CUHK Coop Team'}
                 </span>
               </div>
             </div>
