@@ -328,15 +328,13 @@ function buildExtractionPrompt(
 
     case 'skills':
       jsonSchema = JSON.stringify({
-        language: 'string (required)',
-        categories: [{
-          category: 'string',
-          items: ['string (at least 1)'],
-        }],
+        languages: 'string (required)',
+        skills: 'string (required)',
+        interests: 'string (required)',
       }, null, 2)
       userPrompt = isZh
-        ? `请从以下文本中提取技能信息，返回JSON格式：\n\n${rawText}\n\n必需字段：language（语言）、categories（类别数组，每个类别包含category名称和items技能列表，至少1项技能）。`
-        : `Please extract skills information from the following text and return in JSON format:\n\n${rawText}\n\nRequired fields: language, categories (array, each with category name and items array with at least 1 skill).`
+        ? `请从以下文本中提取技能信息，返回JSON格式：\n\n${rawText}\n\n请将信息提炼成三个方面：\n1. languages（语言）：提炼所有语言相关的信息，整合成一段文字描述\n2. skills（技能）：提炼所有技能相关的信息（如编程语言、工具、框架等），整合成一段文字描述\n3. interests（兴趣）：提炼所有兴趣相关的信息，整合成一段文字描述\n\n每个字段应该是一段完整的文字描述，不需要使用bullet points或列表格式。`
+        : `Please extract skills information from the following text and return in JSON format:\n\n${rawText}\n\nPlease refine the information into three aspects:\n1. languages: Refine all language-related information into a text description\n2. skills: Refine all skill-related information (such as programming languages, tools, frameworks, etc.) into a text description\n3. interests: Refine all interest-related information into a text description\n\nEach field should be a complete text description, no need to use bullet points or list format.`
       break
   }
 
@@ -476,21 +474,14 @@ function validateAndCheckCompleteness(
 
     case 'skills': {
       const skillsData = data as SkillsData
-      if (!skillsData.language) {
-        missingFields.push({ field: 'language', message: isZh ? '语言是必需的' : 'Language is required' })
+      if (!skillsData.languages) {
+        missingFields.push({ field: 'languages', message: isZh ? '语言是必需的' : 'Languages is required' })
       }
-      if (!skillsData.categories || skillsData.categories.length === 0) {
-        missingFields.push({
-          field: 'categories',
-          message: isZh ? '至少需要一个技能类别' : 'At least one skill category is required',
-        })
-      } else {
-        skillsData.categories.forEach((cat, index) => {
-          if (!cat.category) missingFields.push({ field: `categories[${index}].category`, message: isZh ? '类别名称是必需的' : 'Category name is required' })
-          if (!cat.items || cat.items.length === 0) {
-            missingFields.push({ field: `categories[${index}].items`, message: isZh ? '每个类别至少需要一项技能' : 'Each category needs at least one skill' })
-          }
-        })
+      if (!skillsData.skills) {
+        missingFields.push({ field: 'skills', message: isZh ? '技能是必需的' : 'Skills is required' })
+      }
+      if (!skillsData.interests) {
+        missingFields.push({ field: 'interests', message: isZh ? '兴趣是必需的' : 'Interests is required' })
       }
       break
     }

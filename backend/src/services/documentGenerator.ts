@@ -570,49 +570,40 @@ function addLeadershipToWord(children: Paragraph[], data: LeadershipData, isZh: 
 }
 
 function addSkillsToWord(children: Paragraph[], data: SkillsData, isZh: boolean): void {
-  // Language (left aligned, font size 9.5)
-  if (data.language) {
+  // Languages (bullet point, font size 9.5)
+  if (data.languages) {
     children.push(
       new Paragraph({
-        children: [new TextRun({ text: `${isZh ? '语言: ' : 'Language: '}${data.language}`, size: 19 })],
+        children: [new TextRun({ text: `• ${data.languages}`, size: 19 })],
         alignment: AlignmentType.LEFT,
+        indent: { left: 400, hanging: 120 },
         spacing: { before: 0, after: 100 },
       })
     )
   }
 
-  // Categories (font size 9.5)
-  for (const category of data.categories) {
+  // Skills (bullet point, font size 9.5)
+  if (data.skills) {
     children.push(
       new Paragraph({
-        children: [new TextRun({ text: category.category, bold: true, size: 19 })],
-        spacing: { after: 50 },
+        children: [new TextRun({ text: `• ${data.skills}`, size: 19 })],
+        alignment: AlignmentType.LEFT,
+        indent: { left: 400, hanging: 120 },
+        spacing: { after: 100 },
       })
     )
+  }
 
-    // Skills as bullet points or comma-separated (left aligned, font size 9.5)
-    if (category.items.length <= 5) {
-      // Use bullet points for fewer items
-      // Using hanging indent so text aligns with previous line text, not bullet
-      for (const skill of category.items) {
-        children.push(
-          new Paragraph({
-            children: [new TextRun({ text: `• ${skill}`, size: 19 })],
-            alignment: AlignmentType.LEFT,
-            indent: { left: 400, hanging: 120 },
-            spacing: { after: 50 },
-          })
-        )
-      }
-    } else {
-      // Use comma-separated for many items
-      children.push(
-        new Paragraph({
-          children: [new TextRun({ text: category.items.join(', '), size: 19 })],
-          spacing: { after: 100 },
-        })
-      )
-    }
+  // Interests (bullet point, font size 9.5)
+  if (data.interests) {
+    children.push(
+      new Paragraph({
+        children: [new TextRun({ text: `• ${data.interests}`, size: 19 })],
+        alignment: AlignmentType.LEFT,
+        indent: { left: 400, hanging: 120 },
+        spacing: { after: 100 },
+      })
+    )
   }
 }
 
@@ -793,24 +784,21 @@ function addLeadershipToPDF(doc: typeof PDFDocument.prototype, data: LeadershipD
 function addSkillsToPDF(doc: typeof PDFDocument.prototype, data: SkillsData, isZh: boolean): void {
   doc.fontSize(12)
   
-  // Language
-  if (data.language) {
-    doc.text(`${isZh ? '语言: ' : 'Language: '}${data.language}`)
+  // Languages (bullet point)
+  if (data.languages) {
+    doc.font('Helvetica').text(`• ${data.languages}`, { indent: 20 })
+    doc.moveDown(0.3)
   }
 
-  // Categories
-  for (const category of data.categories) {
-    doc.font('Helvetica-Bold').text(category.category)
+  // Skills (bullet point)
+  if (data.skills) {
+    doc.font('Helvetica').text(`• ${data.skills}`, { indent: 20 })
+    doc.moveDown(0.3)
+  }
 
-    // Skills
-    if (category.items.length <= 5) {
-      for (const skill of category.items) {
-        doc.font('Helvetica').text(`• ${skill}`, { indent: 20 })
-      }
-    } else {
-      doc.font('Helvetica').text(category.items.join(', '))
-    }
-
+  // Interests (bullet point)
+  if (data.interests) {
+    doc.font('Helvetica').text(`• ${data.interests}`, { indent: 20 })
     doc.moveDown(0.3)
   }
 }

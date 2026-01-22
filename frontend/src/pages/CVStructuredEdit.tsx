@@ -680,22 +680,17 @@ function FriendlyDataView({ moduleType, data, isZh }: FriendlyDataViewProps) {
   const renderSkills = (skills: SkillsData) => (
     <div className="friendly-view-section">
       <div className="friendly-field">
-        <span className="field-label">{isZh ? '语言' : 'Language'}:</span>
-        <span className="field-value">{skills.language || '-'}</span>
+        <span className="field-label">{isZh ? '语言' : 'Languages'}:</span>
+        <span className="field-value">{skills.languages || '-'}</span>
       </div>
-      {skills.categories && skills.categories.length > 0 && (
-        <div className="friendly-field">
-          <span className="field-label">{isZh ? '技能类别' : 'Skill Categories'}:</span>
-          <div className="skills-categories">
-            {skills.categories.map((cat, index) => (
-              <div key={index} className="skill-category">
-                <strong>{cat.category}:</strong>
-                <span>{cat.items.join(', ')}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <div className="friendly-field">
+        <span className="field-label">{isZh ? '技能' : 'Skills'}:</span>
+        <span className="field-value">{skills.skills || '-'}</span>
+      </div>
+      <div className="friendly-field">
+        <span className="field-label">{isZh ? '兴趣' : 'Interests'}:</span>
+        <span className="field-value">{skills.interests || '-'}</span>
+      </div>
     </div>
   )
 

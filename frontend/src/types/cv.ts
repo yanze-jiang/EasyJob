@@ -71,11 +71,9 @@ export interface LeadershipData {
 
 // 技能数据结构
 export interface SkillsData {
-  language: string         // 语言（必需）
-  categories: Array<{
-    category: string       // 类别（如：编程语言、工具等）
-    items: string[]       // 技能列表（必需，至少1项）
-  }>
+  languages: string        // 语言（必需，提炼后的文字描述）
+  skills: string          // 技能（必需，提炼后的文字描述）
+  interests: string       // 兴趣（必需，提炼后的文字描述）
 }
 
 // 基本信息数据结构
