@@ -84,22 +84,13 @@ function Sidebar() {
           </Link>
         ))}
       </nav>
-      <div className="sidebar-footer">
-        {!collapsed && (
+      {!collapsed && (
+        <div className="sidebar-footer">
           <button className="sidebar-logout" onClick={handleLogout}>
             {isZh ? '登出' : 'Logout'}
           </button>
-        )}
-        {collapsed && (
-          <button 
-            className="sidebar-logout-icon" 
-            onClick={handleLogout}
-            title={isZh ? '登出' : 'Logout'}
-          >
-            🚪
-          </button>
-        )}
-      </div>
+        </div>
+      )}
       <button
         className="sidebar-toggle"
         onClick={() => setCollapsed(!collapsed)}
