@@ -122,7 +122,7 @@ function Home() {
                   onClick={() => setShowTipModal(true)}
                   style={{ cursor: 'pointer' }}
                 >
-                  {isZh ? '打赏开发者' : 'Tip developer'}
+                  {isZh ? '打赏开发者' : 'Sponsor EasyJob'}
                 </span>
               </div>
             </div>
@@ -202,7 +202,7 @@ function Home() {
               ×
             </button>
             <h3 className="modal-title">
-              {isZh ? '打赏开发者' : 'Tip Developer'}
+              {isZh ? '打赏开发者' : 'Sponsor EasyJob'}
             </h3>
             <p className="modal-text">
               {isZh
